@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def index
-    @item = Item.order(created_at: :desc)
+    @items = Item.order(created_at: :desc)
   end
 
   def new
@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    Item.create(item_params)
+    Item.create!(item_params)
     redirect_to items_path
   end
 
@@ -18,3 +18,4 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :price)
   end
 end
+
